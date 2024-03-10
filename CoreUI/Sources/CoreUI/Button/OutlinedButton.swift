@@ -1,14 +1,14 @@
 //
-//  FilledButton.swift
+//  OutlinedButton.swift
 //
 //
-//  Created by Maksim Zoteev on 08.03.2024.
+//  Created by Maksim Zoteev on 09.03.2024.
 //
 
 import Foundation
 import SwiftUI
 
-public struct FilledButton: View {
+public struct OutlinedButton: View {
     let label: String
     let loading: Bool
     let disabled: Bool
@@ -23,19 +23,19 @@ public struct FilledButton: View {
     
     public var body: some View {
         BaseButton(label, loading: loading, disabled: disabled, action: action)
-            .buttonStyle(.borderedProminent)
-            .tint(.black)
+            .foregroundStyle(.black)
+            .buttonStyle(.bordered)
     }
 }
 
 #Preview {
     VStack {
-        FilledButton("Label") {
+        OutlinedButton("Label") {
             NSLog("click")
         }
         .padding()
         
-        FilledButton("Label", loading: true) {
+        OutlinedButton("Label", loading: true) {
             NSLog("click")
         }
         .padding()

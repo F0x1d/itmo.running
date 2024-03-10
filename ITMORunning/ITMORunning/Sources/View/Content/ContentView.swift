@@ -6,16 +6,27 @@
 //
 
 import SwiftUI
+import FeatureWelcome
+import Factory
 
 struct ContentView: View {
+    
+    @InjectedObject(\.welcomeStore) private var welcomeStore
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        Group {
+            if welcomeStore.welcomed {
+                content
+            } else {
+                WelcomeView()
+            }
         }
-        .padding()
+    }
+    
+    private var content: some View {
+        VStack {
+            
+        }
     }
 }
 

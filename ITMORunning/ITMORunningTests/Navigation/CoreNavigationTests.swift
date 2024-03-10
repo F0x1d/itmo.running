@@ -3,7 +3,7 @@ import XCTest
 
 final class CoreNavigationTests: XCTestCase {
     
-    func shouldOpenFirstScreen() {
+    func testShouldOpenFirstScreen() {
         let navigator = TestNavigator()
         
         navigator.openFirstScreen()
@@ -11,7 +11,7 @@ final class CoreNavigationTests: XCTestCase {
         XCTAssertFalse(navigator.path.isEmpty, "path must not be empty")
     }
     
-    func shouldOpenAndCloseScreens() {
+    func testShouldOpenAndCloseScreens() {
         let navigator = TestNavigator()
         
         navigator.openFirstScreen()
