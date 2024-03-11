@@ -7,27 +7,28 @@
 
 import Foundation
 import XCTest
+@testable import FeatureWelcome
 
 struct WelcomeWizardInteractions {
     private let application = XCUIApplication()
     
     var helloButton: XCUIElement {
-        application.buttons["hello_button"]
+        application.buttons[WelcomeView.HELLO_BUTTON_TEST_TAG]
     }
     
     var grantPermissionButton: XCUIElement {
-        application.buttons["grant_button"]
+        application.buttons[PermissionView.GRANT_BUTTON_TEST_TAG]
     }
     
     var grantAlwaysPermissionButton: XCUIElement {
-        application.buttons["grant_always_button"]
+        application.buttons[AlwaysPermissionView.GRANT_ALWAYS_BUTTON_TEST_TAG]
     }
     
     var openSettingsButton: XCUIElement {
-        application.buttons["open_settings_button"]
+        application.buttons[NoPermissionView.OPEN_SETTINGS_BUTTON_TEST_TAG]
     }
     
     var excellentText: XCUIElement {
-        application.staticTexts["excellent_text"]
+        application.staticTexts[ReadyView.EXCELLENT_TEXT_TEST_TAG]
     }
 }

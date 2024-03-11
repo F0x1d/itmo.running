@@ -13,6 +13,7 @@ import SwiftLocation
 import Factory
 
 struct NoPermissionView: View {
+    static let OPEN_SETTINGS_BUTTON_TEST_TAG = "open_settings_button"
     
     @Environment(\.scenePhase) private var scenePhase
     
@@ -32,7 +33,7 @@ struct NoPermissionView: View {
                 viewModel.openSettings()
             }
             .padding()
-            .accessibilityIdentifier("open_settings_button")
+            .accessibilityIdentifier(NoPermissionView.OPEN_SETTINGS_BUTTON_TEST_TAG)
         }
         .onChange(of: scenePhase) { old, new in
             if case .active = new {

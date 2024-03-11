@@ -12,6 +12,7 @@ import CoreDI
 import Factory
 
 struct AlwaysPermissionView: View {
+    static let GRANT_ALWAYS_BUTTON_TEST_TAG = "grant_always_button"
     
     @InjectedObject(\.alwaysPermissionViewModel) private var viewModel
     
@@ -25,7 +26,7 @@ struct AlwaysPermissionView: View {
                 let _ = viewModel.requestAlwaysPermission()
             }
             .padding()
-            .accessibilityIdentifier("grant_always_button")
+            .accessibilityIdentifier(AlwaysPermissionView.GRANT_ALWAYS_BUTTON_TEST_TAG)
         }
         .navigationBarBackButtonHidden()
     }

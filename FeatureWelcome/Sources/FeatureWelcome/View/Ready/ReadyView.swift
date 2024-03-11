@@ -11,6 +11,7 @@ import CoreUI
 import Factory
 
 struct ReadyView: View {
+    static let EXCELLENT_TEXT_TEST_TAG = "excellent_text"
     
     @InjectedObject(\.readyViewModel) private var viewModel
     
@@ -35,7 +36,7 @@ struct ReadyView: View {
                     .font(.title)
                     .bold()
                     .padding(.horizontal, 1)
-                    .accessibilityIdentifier("excellent_text")
+                    .accessibilityIdentifier(ReadyView.EXCELLENT_TEXT_TEST_TAG)
                 
                 Image(systemName: "wand.and.stars")
                     .resizable()

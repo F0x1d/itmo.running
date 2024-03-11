@@ -12,6 +12,7 @@ import Extensions
 import Factory
 
 public struct WelcomeView: View {
+    static let HELLO_BUTTON_TEST_TAG = "hello_button"
     
     @InjectedObject(\.navigator) private var navigator
     
@@ -45,7 +46,7 @@ public struct WelcomeView: View {
                 navigator.openPermissionScreen()
             }
             .padding()
-            .accessibilityIdentifier("hello_button")
+            .accessibilityIdentifier(WelcomeView.HELLO_BUTTON_TEST_TAG)
         }
     }
     

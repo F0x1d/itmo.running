@@ -12,6 +12,7 @@ import CoreDI
 import Factory
 
 struct PermissionView: View {
+    static let GRANT_BUTTON_TEST_TAG = "grant_button"
     
     @InjectedObject(\.permissionViewModel) private var viewModel
     
@@ -25,7 +26,7 @@ struct PermissionView: View {
                 let _ = viewModel.requestPermission()
             }
             .padding()
-            .accessibilityIdentifier("grant_button")
+            .accessibilityIdentifier(PermissionView.GRANT_BUTTON_TEST_TAG)
         }
         .navigationBarBackButtonHidden()
     }
