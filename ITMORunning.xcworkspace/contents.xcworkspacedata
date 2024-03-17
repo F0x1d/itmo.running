@@ -25,4 +25,13 @@
    <FileRef
       location = "group:FeatureWelcome">
    </FileRef>
+   <FileRef
+      location = "group:FeatureHistory">
+   </FileRef>
+   <FileRef
+      location = "group:FeatureTrack">
+   </FileRef>
+   <FileRef
+      location = "group:FeatureSettings">
+   </FileRef>
 </Workspace>

@@ -11,7 +11,8 @@ let package = Package(
     products: [
         .library(
             name: "FeatureWelcome",
-            targets: ["FeatureWelcome"]),
+            targets: ["FeatureWelcome"]
+        )
     ],
     dependencies: [
         .package(path: "../CoreNavigation"),
