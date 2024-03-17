@@ -17,6 +17,9 @@
       location = "group:CoreDI">
    </FileRef>
    <FileRef
+      location = "group:CoreTesting">
+   </FileRef>
+   <FileRef
       location = "group:Extensions">
    </FileRef>
    <FileRef

@@ -11,7 +11,7 @@ import SwiftLocation
 import Factory
 
 public extension Container {
-    var locationManager: Factory<CLLocationManager> {
+    var locationManager: Factory<any LocationManagerProtocol> {
         self { CLLocationManager() }
     }
     
