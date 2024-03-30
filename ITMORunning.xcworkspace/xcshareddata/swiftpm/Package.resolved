@@ -1,0 +1,33 @@
+{
+  "originHash" : "4af9e00b0fbc427f8f4efedbf7355bacc2f6b6aab122a939dac9d6bde3c342e4",
+  "pins" : [
+    {
+      "identity" : "alertkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/sparrowcode/AlertKit",
+      "state" : {
+        "revision" : "3d35de60ad26aab58395ebecdd63b533546862ed",
+        "version" : "5.1.8"
+      }
+    },
+    {
+      "identity" : "factory",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/hmlongco/Factory",
+      "state" : {
+        "revision" : "8ca11a7bd1ede031e8e6d7a912bb116e2e43961b",
+        "version" : "2.3.1"
+      }
+    },
+    {
+      "identity" : "swiftlocation",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/malcommac/SwiftLocation",
+      "state" : {
+        "revision" : "010073e62cea4daefea61042a51b8619d23cdc35",
+        "version" : "6.0.0"
+      }
+    }
+  ],
+  "version" : 3
+}
