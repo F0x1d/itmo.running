@@ -14,14 +14,8 @@ import CoreDI
 import Factory
 
 final class NoPermissionViewModel: BaseViewModel {
-    
-    private let waitingFor: LocationPermission
-    
+        
     @Injected(\.navigator) private var navigator
-    
-    init(waitingFor: LocationPermission) {
-        self.waitingFor = waitingFor
-    }
     
     func openSettings() {
         UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
@@ -29,12 +23,10 @@ final class NoPermissionViewModel: BaseViewModel {
     
     func checkPermission() -> Task<Void, Never> {
         Task {
-            let result = try? await di.location().requestPermission(waitingFor)
+            let result = try? await di.location().requestPermission(.always)
             
             if case .authorizedAlways = result {
                 navigator.openReadyScreen()
-            } else if case .authorizedWhenInUse = result, case .whenInUse = waitingFor {
-                navigator.openAlwaysPermissionScreen()
             }
         }
     }

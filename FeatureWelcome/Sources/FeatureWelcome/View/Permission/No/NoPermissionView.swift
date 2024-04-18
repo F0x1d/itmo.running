@@ -17,12 +17,8 @@ struct NoPermissionView: View {
     
     @Environment(\.scenePhase) private var scenePhase
     
-    @StateObject private var viewModel: NoPermissionViewModel
-    
-    init(waitingFor: LocationPermission) {
-        self._viewModel = StateObject(wrappedValue: di.noPermissionViewModel(waitingFor))
-    }
-    
+    @InjectedObject(\.noPermissionViewModel) private var viewModel
+        
     var body: some View {
         VStack {
             Spacer()
@@ -65,5 +61,5 @@ struct NoPermissionView: View {
 }
 
 #Preview {
-    NoPermissionView(waitingFor: .whenInUse)
+    NoPermissionView()
 }

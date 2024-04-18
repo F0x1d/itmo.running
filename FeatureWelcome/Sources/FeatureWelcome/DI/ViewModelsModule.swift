@@ -18,8 +18,8 @@ import Factory
         self { AlwaysPermissionViewModel() }
     }
     
-    var noPermissionViewModel: ParameterFactory<LocationPermission, NoPermissionViewModel> {
-        self { NoPermissionViewModel(waitingFor: $0) }
+    var noPermissionViewModel: Factory<NoPermissionViewModel> {
+        self { NoPermissionViewModel() }
     }
     
     var readyViewModel: Factory<ReadyViewModel> {

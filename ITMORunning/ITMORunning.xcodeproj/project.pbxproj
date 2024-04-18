@@ -53,6 +53,7 @@
 		A76833932BA77E6C005E25B4 /* FeatureHistory in Frameworks */ = {isa = PBXBuildFile; productRef = A76833922BA77E6C005E25B4 /* FeatureHistory */; };
 		A76833952BA77E71005E25B4 /* FeatureHistory in Frameworks */ = {isa = PBXBuildFile; productRef = A76833942BA77E71005E25B4 /* FeatureHistory */; };
 		A76833972BA77E78005E25B4 /* FeatureHistory in Frameworks */ = {isa = PBXBuildFile; productRef = A76833962BA77E78005E25B4 /* FeatureHistory */; };
+		A7B049A52BD1259A00AF69AA /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A7B049A42BD1259A00AF69AA /* Settings.bundle */; };
 		A7F8782D2B9B889C00273516 /* ITMORunningApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F8782C2B9B889C00273516 /* ITMORunningApp.swift */; };
 		A7F8782F2B9B889C00273516 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F8782E2B9B889C00273516 /* ContentView.swift */; };
 		A7F878312B9B889D00273516 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7F878302B9B889D00273516 /* Assets.xcassets */; };
@@ -91,6 +92,7 @@
 		A724EE402BA7794E007A7DF7 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		A76833872BA77AC4005E25B4 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		A768338A2BA77AE7005E25B4 /* ViewModelsModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelsModule.swift; sourceTree = "<group>"; };
+		A7B049A42BD1259A00AF69AA /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		A7F878292B9B889C00273516 /* ITMORunning.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ITMORunning.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7F8782C2B9B889C00273516 /* ITMORunningApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITMORunningApp.swift; sourceTree = "<group>"; };
 		A7F8782E2B9B889C00273516 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 				A70940852B9B8A1700C90238 /* Sources */,
 				A70098122B9CCC76009E6CE7 /* Info.plist */,
 				A7F878302B9B889D00273516 /* Assets.xcassets */,
+				A7B049A42BD1259A00AF69AA /* Settings.bundle */,
 				A7F878322B9B889D00273516 /* ITMORunning.entitlements */,
 				A7F878332B9B889D00273516 /* Preview Content */,
 				A712C2A52B9E41D20095F049 /* ITMORunning.xctestplan */,
@@ -465,6 +468,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7B049A52BD1259A00AF69AA /* Settings.bundle in Resources */,
 				A7F878352B9B889D00273516 /* Preview Assets.xcassets in Resources */,
 				A7F878312B9B889D00273516 /* Assets.xcassets in Resources */,
 				A724EE412BA7794E007A7DF7 /* Localizable.xcstrings in Resources */,

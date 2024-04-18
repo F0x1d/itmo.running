@@ -23,7 +23,7 @@ final class NoPermissionViewModelTests: XCTestCase {
             return .authorizedAlways
         })
         
-        let viewModel = await di.noPermissionViewModel(.always)
+        let viewModel = await di.noPermissionViewModel()
         
         let task = await viewModel.checkPermission()
         await task.value
