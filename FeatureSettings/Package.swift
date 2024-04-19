@@ -14,9 +14,18 @@ let package = Package(
             targets: ["FeatureSettings"]
         )
     ],
+    dependencies: [
+        .package(path: "../Extensions")
+    ],
     targets: [
         .target(
-            name: "FeatureSettings"
+            name: "FeatureSettings",
+            dependencies: [
+                "Extensions"
+            ],
+            resources: [
+                .process("Resources")
+            ]
         )
     ]
 )

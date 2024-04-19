@@ -14,9 +14,17 @@ let package = Package(
             targets: ["FeatureHistory"]
         )
     ],
+    dependencies: [
+        .package(path: "../Data"),
+        .package(path: "../Extensions")
+    ],
     targets: [
         .target(
-            name: "FeatureHistory"
+            name: "FeatureHistory",
+            dependencies: [
+                "Data",
+                "Extensions"
+            ]
         )
     ]
 )

@@ -5,6 +5,9 @@
       location = "group:ITMORunning/ITMORunning.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:Data">
+   </FileRef>
+   <FileRef
       location = "group:CoreNavigation">
    </FileRef>
    <FileRef
