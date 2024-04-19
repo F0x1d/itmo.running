@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import CoreUI
 import Factory
 import MapKit
 import Extensions
@@ -21,6 +22,8 @@ public struct TrackView: View {
         NavigationStack {
             ScrollView {
                 map
+                controls
+                    .padding()
                 
                 LazyVStack {
                     ForEach(viewModel.items) { coordinate in
@@ -50,6 +53,23 @@ public struct TrackView: View {
             }
         }
         .aspectRatio(1, contentMode: .fill)
+    }
+    
+    private var controls: some View {
+        Group {
+            if viewModel.monitoring {
+                OutlinedButton("stop") {
+                    viewModel.stopMonitoring()
+                }
+            } else {
+                FilledButton(
+                    "start",
+                    disabled: viewModel.currentLocation == nil
+                ) {
+                    viewModel.startMonitoring()
+                }
+            }
+        }
     }
 }
 
