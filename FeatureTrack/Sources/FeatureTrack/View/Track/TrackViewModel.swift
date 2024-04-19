@@ -16,11 +16,11 @@ import CoreLocation
 import SwiftLocation
 
 final class TrackViewModel: BaseViewModel {
-    @Published var currentLocation: CLLocationCoordinate2D? = nil
+    @Published var currentLocation: CLLocation? = nil
     @Published var currentMapCameraPosition = MapCameraPosition.automatic
     
     @Published var monitoring = false
-    @Published var items = [CLLocationCoordinate2D]()
+    @Published var path = [IdentifiableLocation]()
     
     @Injected(\.location) private var location
     
@@ -33,7 +33,7 @@ final class TrackViewModel: BaseViewModel {
             // Initial
             while !Task.isCancelled {
                 do {
-                    updateLocation(with: try await location.requestLocation().location?.coordinate)
+                    updateLocation(with: try await location.requestLocation().location)
                     break
                 } catch {
                     try? await Task.sleep(for: .seconds(1))
@@ -47,10 +47,20 @@ final class TrackViewModel: BaseViewModel {
             monitoring = true
         }
         
+        var currentId = 0
+        
+        if let currentLocation {
+            path.append(
+                IdentifiableLocation(id: currentId, location: currentLocation)
+            )
+        }
+                
         monitoringTask = Task { [weak self] in
             guard let self else { return }
-            
+                        
             for await event in try await location.startMonitoringLocations() {
+                if Task.isCancelled { break }
+                
                 switch event {
                 case .didPaused:
                     continue
@@ -58,25 +68,22 @@ final class TrackViewModel: BaseViewModel {
                     continue
                 case let .didUpdateLocations(locations):
                     guard let lastLocation = locations.last else { continue }
-                                        
-                    withAnimation { [weak self] in
-                        guard let self else { return }
-                        
-                        items.append(contentsOf: locations.map { $0.coordinate })
-                        
-                        currentLocation = lastLocation.coordinate
-                        currentMapCameraPosition = MapCameraPosition.region(
-                            MKCoordinateRegion(
-                                center: lastLocation.coordinate,
-                                span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1)
-                            )
-                        )
-                    }
+                    
+                    path.append(
+                        contentsOf: locations.map { location in
+                            currentId += 1
+                            return IdentifiableLocation(id: currentId, location: location)
+                        }
+                    )
+                    
+                    updateLocation(with: lastLocation)
 
                 case .didFailed(_):
                     continue
                 }
             }
+            
+            location.stopUpdatingLocation()            
         }
     }
     
@@ -85,22 +92,24 @@ final class TrackViewModel: BaseViewModel {
         
         withAnimation {
             monitoring = false
-            items = []
+            path = []
         }
     }
     
-    private func updateLocation(with location: CLLocationCoordinate2D?) {
+    private func updateLocation(with location: CLLocation?) {
         currentLocation = location
         
-        if let location {
-            currentMapCameraPosition = MapCameraPosition.region(
-                MKCoordinateRegion(
-                    center: location,
-                    span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1)
+        withAnimation {
+            if let location {
+                currentMapCameraPosition = MapCameraPosition.region(
+                    MKCoordinateRegion(
+                        center: location.coordinate,
+                        span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+                    )
                 )
-            )
-        } else {
-            currentMapCameraPosition = MapCameraPosition.automatic
+            } else {
+                currentMapCameraPosition = MapCameraPosition.automatic
+            }
         }
     }
 }

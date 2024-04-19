@@ -17,13 +17,15 @@ public class Training {
     public var endTime: Int64
     
     public var coordinates: [CLLocationCoordinate2D]
+    public var distance: Double
     
-    init(length: Float, startTime: Int64, endTime: Int64) {
+    init(length: Float, startTime: Int64, endTime: Int64, coordinates: [CLLocationCoordinate2D], distance: Double) {
         self.length = length
         self.startTime = startTime
         self.endTime = endTime
         
-        self.coordinates = []
+        self.coordinates = coordinates
+        self.distance = distance
     }
 }
 

@@ -26,8 +26,8 @@ public struct TrackView: View {
                     .padding()
                 
                 LazyVStack {
-                    ForEach(viewModel.items) { coordinate in
-                        Text("\(coordinate)")
+                    ForEach(viewModel.path) { location in
+                        Text("\(location.wrapped.speed)")
                     }
                 }
             }
@@ -37,13 +37,15 @@ public struct TrackView: View {
     
     private var map: some View {
         Group {
-            if viewModel.currentLocation != nil {
+            if let currentLocation = viewModel.currentLocation {
                 Map(
                     position: $viewModel.currentMapCameraPosition,
-                    interactionModes: []
+                    interactionModes: viewModel.monitoring ? [] : [.all]
                 ) {
-                    ForEach(viewModel.items) { coordinate in
-                        Marker("HELLO", coordinate: coordinate)
+                    MeAnnotation(coordinate: currentLocation.coordinate)
+                    
+                    ForEach(viewModel.path) { location in
+                        PathAnnotation(coordinate: location.wrapped.coordinate)
                     }
                 }
             } else {
@@ -75,10 +77,4 @@ public struct TrackView: View {
 
 #Preview {
     TrackView()
-}
-
-extension CLLocationCoordinate2D: Identifiable {
-    public var id: Double {
-        self.latitude
-    }
 }
