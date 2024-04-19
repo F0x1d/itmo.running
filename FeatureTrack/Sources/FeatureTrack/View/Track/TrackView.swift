@@ -7,14 +7,18 @@
 
 import Foundation
 import SwiftUI
+import Extensions
 
 public struct TrackView: View {
     
     public init() { }
     
     public var body: some View {
-        List {
-            
+        NavigationStack {
+            List {
+                
+            }
+            .navigationTitle("track".localize(.module))
         }
     }
 }

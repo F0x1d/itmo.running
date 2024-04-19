@@ -27,10 +27,10 @@ final class PermissionViewModel: BaseViewModel {
                     navigator.openAlwaysPermissionScreen()
                     
                 default:
-                    navigator.openNoPermissionScreen(waitFor: .whenInUse)
+                    navigator.openNoPermissionScreen()
                 }
             } catch {
-                navigator.openNoPermissionScreen(waitFor: .whenInUse)
+                navigator.openNoPermissionScreen()
             }
         }
     }

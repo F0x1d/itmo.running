@@ -12,14 +12,16 @@ import CoreDI
 import SwiftLocation
 import Factory
 
-struct NoPermissionView: View {
+public struct NoPermissionView: View {
     static let OPEN_SETTINGS_BUTTON_TEST_TAG = "open_settings_button"
     
     @Environment(\.scenePhase) private var scenePhase
     
     @InjectedObject(\.noPermissionViewModel) private var viewModel
+    
+    public init() { }
         
-    var body: some View {
+    public var body: some View {
         VStack {
             Spacer()
             textsBlock

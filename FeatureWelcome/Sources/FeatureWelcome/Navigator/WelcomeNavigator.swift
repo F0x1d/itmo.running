@@ -19,8 +19,8 @@ final class WelcomeNavigator: BaseNavigator<WelcomeScreen> {
         openScreen(.alwaysPermission)
     }
     
-    func openNoPermissionScreen(waitFor: LocationPermission) {
-        openScreen(.noPermission(waitFor: waitFor))
+    func openNoPermissionScreen() {
+        openScreen(.noPermission)
     }
     
     func openReadyScreen() {
@@ -31,6 +31,6 @@ final class WelcomeNavigator: BaseNavigator<WelcomeScreen> {
 enum WelcomeScreen: Hashable {
     case permission
     case alwaysPermission
-    case noPermission(waitFor: LocationPermission)
+    case noPermission
     case ready
 }

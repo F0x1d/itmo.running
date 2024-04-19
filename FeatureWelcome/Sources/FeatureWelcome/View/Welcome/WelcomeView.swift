@@ -27,7 +27,7 @@ public struct WelcomeView: View {
                         PermissionView()
                     case .alwaysPermission:
                         AlwaysPermissionView()
-                    case .noPermission(let waitFor):
+                    case .noPermission:
                         NoPermissionView()
                     case .ready:
                         ReadyView()

@@ -18,6 +18,8 @@ struct ContentView: View {
     
     @InjectedObject(\.welcomeStore) private var welcomeStore
     
+    @Environment(\.scenePhase) private var scenePhase
+    
     var body: some View {
         Group {
             if welcomeStore.welcomed {
@@ -26,27 +28,41 @@ struct ContentView: View {
                 WelcomeView()
             }
         }
+        .onChange(of: welcomeStore.welcomed) { _, welcomed in
+            viewModel.checkPermission()
+        }
     }
     
     private var content: some View {
-        TabView(selection: $viewModel.currentTab) {
-            HistoryView()
-                .tag(ContentViewTab.history)
-                .tabItem {
-                    Label("history", systemImage: "clock")
+        Group {
+            if viewModel.locationPermissionAvailable {
+                TabView(selection: $viewModel.currentTab) {
+                    HistoryView()
+                        .tag(ContentViewTab.history)
+                        .tabItem {
+                            Label("history", systemImage: "clock")
+                        }
+                    
+                    TrackView()
+                        .tag(ContentViewTab.track)
+                        .tabItem {
+                            Label("track", systemImage: "location.north.line")
+                        }
+                    
+                    SettingsView()
+                        .tag(ContentViewTab.settings)
+                        .tabItem {
+                            Label("settings", systemImage: "wand.and.stars")
+                        }
                 }
-            
-            TrackView()
-                .tag(ContentViewTab.track)
-                .tabItem {
-                    Label("track", systemImage: "location.north.line")
-                }
-            
-            SettingsView()
-                .tag(ContentViewTab.settings)
-                .tabItem {
-                    Label("settings", systemImage: "wand.and.stars")
-                }
+            } else {
+                NoPermissionView()
+            }
+        }
+        .onChange(of: scenePhase) { _, phase in
+            if case .active = scenePhase {
+                viewModel.checkPermission()
+            }
         }
     }
 }

@@ -22,10 +22,10 @@ final class AlwaysPermissionViewModel: BaseViewModel {
                 if case .authorizedAlways = result {
                     navigator.openReadyScreen()
                 } else {
-                    navigator.openNoPermissionScreen(waitFor: .always)
+                    navigator.openNoPermissionScreen()
                 }
             } catch {
-                navigator.openNoPermissionScreen(waitFor: .always)
+                navigator.openNoPermissionScreen()
             }
         }
     }

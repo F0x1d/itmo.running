@@ -29,7 +29,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "itmo.running can't work without always permission! use system settings to grant it"
+            "value" : "itmo.running can't work without always location permission! use system settings to grant it"
           }
         }
       }
