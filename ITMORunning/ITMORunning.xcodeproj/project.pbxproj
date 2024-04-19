@@ -25,7 +25,6 @@
 		A712C2A42B9E3C220095F049 /* CoreDI in Frameworks */ = {isa = PBXBuildFile; productRef = A712C2A32B9E3C220095F049 /* CoreDI */; };
 		A712C2A82B9E4B1D0095F049 /* ApplicationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A712C2A72B9E4B1D0095F049 /* ApplicationExtensions.swift */; };
 		A712C2AC2B9E53730095F049 /* AlwaysPermissionViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A712C2AB2B9E53730095F049 /* AlwaysPermissionViewModelTests.swift */; };
-		A712C2AE2B9E53790095F049 /* NoPermissionViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A712C2AD2B9E53790095F049 /* NoPermissionViewModelTests.swift */; };
 		A712C2B02B9E537C0095F049 /* PermissionViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A712C2AF2B9E537C0095F049 /* PermissionViewModelTests.swift */; };
 		A712C2B32B9E540D0095F049 /* TestNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A712C2B22B9E540D0095F049 /* TestNavigator.swift */; };
 		A712C2B52B9E54120095F049 /* CoreNavigationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A712C2B42B9E54120095F049 /* CoreNavigationTests.swift */; };
@@ -88,7 +87,6 @@
 		A712C2A52B9E41D20095F049 /* ITMORunning.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = ITMORunning.xctestplan; sourceTree = "<group>"; };
 		A712C2A72B9E4B1D0095F049 /* ApplicationExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationExtensions.swift; sourceTree = "<group>"; };
 		A712C2AB2B9E53730095F049 /* AlwaysPermissionViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlwaysPermissionViewModelTests.swift; sourceTree = "<group>"; };
-		A712C2AD2B9E53790095F049 /* NoPermissionViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoPermissionViewModelTests.swift; sourceTree = "<group>"; };
 		A712C2AF2B9E537C0095F049 /* PermissionViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionViewModelTests.swift; sourceTree = "<group>"; };
 		A712C2B22B9E540D0095F049 /* TestNavigator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestNavigator.swift; sourceTree = "<group>"; };
 		A712C2B42B9E54120095F049 /* CoreNavigationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreNavigationTests.swift; sourceTree = "<group>"; };
@@ -240,7 +238,6 @@
 			isa = PBXGroup;
 			children = (
 				A712C2AB2B9E53730095F049 /* AlwaysPermissionViewModelTests.swift */,
-				A712C2AD2B9E53790095F049 /* NoPermissionViewModelTests.swift */,
 				A712C2AF2B9E537C0095F049 /* PermissionViewModelTests.swift */,
 			);
 			path = ViewModels;
@@ -520,7 +517,6 @@
 				A712C2B32B9E540D0095F049 /* TestNavigator.swift in Sources */,
 				A712C2AC2B9E53730095F049 /* AlwaysPermissionViewModelTests.swift in Sources */,
 				A712C2B02B9E537C0095F049 /* PermissionViewModelTests.swift in Sources */,
-				A712C2AE2B9E53790095F049 /* NoPermissionViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
