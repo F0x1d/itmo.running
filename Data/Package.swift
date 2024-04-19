@@ -14,9 +14,15 @@ let package = Package(
             targets: ["Data"]
         )
     ],
+    dependencies: [
+        .package(url: "https://github.com/hmlongco/Factory.git", from: "2.3.0")
+    ],
     targets: [
         .target(
-            name: "Data"
+            name: "Data",
+            dependencies: [
+                "Factory"
+            ]
         )
     ]
 )

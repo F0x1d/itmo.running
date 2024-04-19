@@ -12,20 +12,18 @@ import CoreLocation
 @Model
 public class Training {
     
-    public var length: Float
-    public var startTime: Int64
-    public var endTime: Int64
+    public var distance: Double
+    public var startTime: Date
+    public var endTime: Date
     
     public var coordinates: [CLLocationCoordinate2D]
-    public var distance: Double
     
-    init(length: Float, startTime: Int64, endTime: Int64, coordinates: [CLLocationCoordinate2D], distance: Double) {
-        self.length = length
+    public init(distance: Double, startTime: Date, endTime: Date, coordinates: [CLLocationCoordinate2D]) {
+        self.distance = distance
         self.startTime = startTime
         self.endTime = endTime
         
         self.coordinates = coordinates
-        self.distance = distance
     }
 }
 

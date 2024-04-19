@@ -33,13 +33,11 @@ struct HistoryItemView: View {
     let training: Training
     
     var body: some View {
-        VStack {
-            Text("\(training.startTime) - \(training.endTime)")
+        VStack(alignment: .leading) {
+            Text("\(training.startTime.formatted())")
+            Text("\(training.endTime.formatted())")
             
-            Spacer()
-                .frame(height: 10)
-            
-            Text("\(training.length) km")
+            Text("\(training.distance) m")
                 .foregroundStyle(.secondary)
         }
     }

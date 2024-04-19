@@ -23,6 +23,7 @@ final class TrackViewModel: BaseViewModel {
     @Published var path = [IdentifiableLocation]()
     
     @Injected(\.location) private var location
+    @Injected(\.modelContext) private var modelContext
     
     private var monitoringTask: Task<Void, Error>? = nil
     
@@ -83,17 +84,50 @@ final class TrackViewModel: BaseViewModel {
                 }
             }
             
-            location.stopUpdatingLocation()            
+            location.stopUpdatingLocation()
+            
+            if path.isEmpty { return }
+            
+            let training: Training? = await Task { @TrackViewModelActor [weak self] in
+                guard let self else { return nil }
+                
+                var distance: Double = 0
+                var prevPoint: CLLocation? = nil
+                for location in await path {
+                    guard var prevPoint else {
+                        prevPoint = location.wrapped
+                        continue
+                    }
+                    
+                    let nextPoint = location.wrapped
+                    
+                    distance += prevPoint.distance(from: nextPoint)
+                    prevPoint = nextPoint
+                }
+                
+                return await Training(
+                    distance: distance,
+                    startTime: path.first!.wrapped.timestamp,
+                    endTime: path.last!.wrapped.timestamp,
+                    coordinates: path.map { $0.wrapped.coordinate }
+                )
+            }.value
+            
+            if let training {
+                modelContext.insert(training)
+            }
+            
+            withAnimation { [weak self] in
+                guard let self else { return }
+                
+                monitoring = false
+                path = []
+            }
         }
     }
     
     func stopMonitoring() {
         monitoringTask?.cancel()
-        
-        withAnimation {
-            monitoring = false
-            path = []
-        }
     }
     
     private func updateLocation(with location: CLLocation?) {
@@ -112,4 +146,8 @@ final class TrackViewModel: BaseViewModel {
             }
         }
     }
+}
+
+@globalActor actor TrackViewModelActor {
+    static let shared = TrackViewModelActor()
 }
