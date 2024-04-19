@@ -15,19 +15,33 @@ import Factory
 
 final class NoPermissionViewModel: BaseViewModel {
         
+    @Injected(\.location) private var location
     @Injected(\.navigator) private var navigator
+    
+    override init() {
+        super.init()
+        
+        Task { [weak self] in
+            guard let self else { return }
+                        
+            let result = try? await location.requestPermission(.always)
+            if result == .authorizedAlways {
+                navigator.openReadyScreen()
+            }
+                        
+            for await event in await location.startMonitoringAuthorization() {
+                if case .authorizedAlways = event.authorizationStatus {
+                    navigator.openReadyScreen()
+                }
+            }
+        }
+    }
     
     func openSettings() {
         UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
     }
     
-    func checkPermission() -> Task<Void, Never> {
-        Task {
-            let result = try? await di.location().requestPermission(.always)
-            
-            if case .authorizedAlways = result {
-                navigator.openReadyScreen()
-            }
-        }
+    deinit {
+        NSLog("DIED")
     }
 }

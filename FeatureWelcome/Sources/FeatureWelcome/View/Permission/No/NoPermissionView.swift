@@ -14,9 +14,7 @@ import Factory
 
 public struct NoPermissionView: View {
     static let OPEN_SETTINGS_BUTTON_TEST_TAG = "open_settings_button"
-    
-    @Environment(\.scenePhase) private var scenePhase
-    
+        
     @InjectedObject(\.noPermissionViewModel) private var viewModel
     
     public init() { }
@@ -32,11 +30,6 @@ public struct NoPermissionView: View {
             }
             .padding()
             .accessibilityIdentifier(NoPermissionView.OPEN_SETTINGS_BUTTON_TEST_TAG)
-        }
-        .onChange(of: scenePhase) { old, new in
-            if case .active = new {
-                let _ = viewModel.checkPermission()
-            }
         }
         .navigationBarBackButtonHidden()
     }

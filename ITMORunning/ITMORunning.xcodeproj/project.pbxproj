@@ -57,8 +57,6 @@
 		A7B049A72BD1A43D00AF69AA /* Data in Frameworks */ = {isa = PBXBuildFile; productRef = A7B049A62BD1A43D00AF69AA /* Data */; };
 		A7B049A92BD1A44300AF69AA /* Data in Frameworks */ = {isa = PBXBuildFile; productRef = A7B049A82BD1A44300AF69AA /* Data */; };
 		A7B049AB2BD1A44700AF69AA /* Data in Frameworks */ = {isa = PBXBuildFile; productRef = A7B049AA2BD1A44700AF69AA /* Data */; };
-		A7B049AE2BD241E300AF69AA /* LocationPermissionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B049AD2BD241E300AF69AA /* LocationPermissionRepository.swift */; };
-		A7B049B02BD2462F00AF69AA /* RepositoriesModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B049AF2BD2462F00AF69AA /* RepositoriesModule.swift */; };
 		A7F8782D2B9B889C00273516 /* ITMORunningApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F8782C2B9B889C00273516 /* ITMORunningApp.swift */; };
 		A7F8782F2B9B889C00273516 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F8782E2B9B889C00273516 /* ContentView.swift */; };
 		A7F878312B9B889D00273516 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7F878302B9B889D00273516 /* Assets.xcassets */; };
@@ -98,8 +96,6 @@
 		A76833872BA77AC4005E25B4 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		A768338A2BA77AE7005E25B4 /* ViewModelsModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelsModule.swift; sourceTree = "<group>"; };
 		A7B049A42BD1259A00AF69AA /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
-		A7B049AD2BD241E300AF69AA /* LocationPermissionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPermissionRepository.swift; sourceTree = "<group>"; };
-		A7B049AF2BD2462F00AF69AA /* RepositoriesModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesModule.swift; sourceTree = "<group>"; };
 		A7F878292B9B889C00273516 /* ITMORunning.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ITMORunning.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7F8782C2B9B889C00273516 /* ITMORunningApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITMORunningApp.swift; sourceTree = "<group>"; };
 		A7F8782E2B9B889C00273516 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -193,7 +189,6 @@
 		A70940852B9B8A1700C90238 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				A7B049AC2BD241CF00AF69AA /* Repository */,
 				A76833892BA77ADF005E25B4 /* DI */,
 				A70940862B9B8A1F00C90238 /* View */,
 				A7F8782C2B9B889C00273516 /* ITMORunningApp.swift */,
@@ -264,17 +259,8 @@
 			isa = PBXGroup;
 			children = (
 				A768338A2BA77AE7005E25B4 /* ViewModelsModule.swift */,
-				A7B049AF2BD2462F00AF69AA /* RepositoriesModule.swift */,
 			);
 			path = DI;
-			sourceTree = "<group>";
-		};
-		A7B049AC2BD241CF00AF69AA /* Repository */ = {
-			isa = PBXGroup;
-			children = (
-				A7B049AD2BD241E300AF69AA /* LocationPermissionRepository.swift */,
-			);
-			path = Repository;
 			sourceTree = "<group>";
 		};
 		A7F878202B9B889C00273516 = {
@@ -522,9 +508,7 @@
 				A7F8782F2B9B889C00273516 /* ContentView.swift in Sources */,
 				A7F8782D2B9B889C00273516 /* ITMORunningApp.swift in Sources */,
 				A768338B2BA77AE7005E25B4 /* ViewModelsModule.swift in Sources */,
-				A7B049B02BD2462F00AF69AA /* RepositoriesModule.swift in Sources */,
 				A76833882BA77AC4005E25B4 /* ContentViewModel.swift in Sources */,
-				A7B049AE2BD241E300AF69AA /* LocationPermissionRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -28,9 +28,6 @@ struct ContentView: View {
                 WelcomeView()
             }
         }
-        .onChange(of: welcomeStore.welcomed) { _, welcomed in
-            viewModel.checkPermission()
-        }
     }
     
     private var content: some View {
@@ -57,11 +54,6 @@ struct ContentView: View {
                 }
             } else {
                 NoPermissionView()
-            }
-        }
-        .onChange(of: scenePhase) { _, phase in
-            if case .active = scenePhase {
-                viewModel.checkPermission()
             }
         }
     }

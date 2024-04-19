@@ -12,15 +12,21 @@ import Factory
 
 public extension Container {
     var locationManager: Factory<any LocationManagerProtocol> {
-        self { CLLocationManager() }
+        self {
+            let manager = CLLocationManager()
+            manager.showsBackgroundLocationIndicator = true
+            return manager
+        }
     }
     
     var location: Factory<Location> {
         self {
-            Location(
+            let location = Location(
                 locationManager: self.locationManager(),
                 allowsBackgroundLocationUpdates: true
             )
+            location.activityType = CLActivityType.fitness
+            return location
         }
     }
 }

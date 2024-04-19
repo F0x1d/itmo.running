@@ -14,21 +14,24 @@ final class ContentViewModel: BaseViewModel {
     @Published var currentTab: ContentViewTab = .track
     @Published var locationPermissionAvailable = false
     
-    @Injected(\.locationPermissionRepository) var locationPermissionRepository
-    
+    @Injected(\.location) private var location
+    @Injected(\.welcomeStore) private var welcomeStore
+        
     override init() {
         super.init()
         
-        locationPermissionRepository.permissionGrantedPublisher()
-            .sink { [weak self] granted in
-                withAnimation {
-                    self?.locationPermissionAvailable = granted
+        Task { [weak self] in
+            guard let self else { return }
+            
+            if welcomeStore.welcomed {
+                if let result = try? await location.requestPermission(.always) {
+                    locationPermissionAvailable = result == .authorizedAlways
                 }
             }
-            .store(in: &compositeSubscription)
-    }
-    
-    func checkPermission() {
-        let _ = locationPermissionRepository.isLocationPermissionAvailable()
+                        
+            for await event in await location.startMonitoringAuthorization() {
+                locationPermissionAvailable = event.authorizationStatus == .authorizedAlways
+            }
+        }
     }
 }
