@@ -8,7 +8,7 @@
 	<string>development</string>
 	<key>com.apple.developer.icloud-container-identifiers</key>
 	<array>
-		<string>iCloud.itmo_running_trainings</string>
+		<string>iCloud.com.f0x1d.ITMORunning</string>
 	</array>
 	<key>com.apple.developer.icloud-services</key>
 	<array>
