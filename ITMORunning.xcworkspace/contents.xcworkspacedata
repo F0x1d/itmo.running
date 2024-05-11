@@ -26,6 +26,9 @@
       location = "group:Extensions">
    </FileRef>
    <FileRef
+      location = "group:FeatureLocationApi">
+   </FileRef>
+   <FileRef
       location = "group:FeatureWelcome">
    </FileRef>
    <FileRef

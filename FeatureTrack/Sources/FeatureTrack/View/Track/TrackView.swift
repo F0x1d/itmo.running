@@ -29,13 +29,13 @@ public struct TrackView: View {
             if viewModel.monitoring {
                 Section {
                     HStack(spacing: 1) {
-                        StatsItem(title: "distance", value: "\(viewModel.distance.round(to: 1)) m")
-                        StatsItem(title: "speed", value: "\(viewModel.speed.round(to: 1)) m/s")
-                        StatsItem(title: "time", value: "\(Int(Date().timeIntervalSince(viewModel.startTime))) s")
+                        StatsItem(title: "distance".localize(), value: "\(viewModel.distance.round(to: 1)) m")
+                        StatsItem(title: "speed".localize(), value: "\(viewModel.speed.round(to: 1)) m/s")
+                        StatsItem(title: "time".localize(), value: "\(Int(Date().timeIntervalSince(viewModel.startTime))) s")
                     }
                     
                     HStack(spacing: 1) {
-                        StatsItem(title: "mid speed", value: "\(viewModel.midSpeed.round(to: 1)) m/s")
+                        StatsItem(title: "mid_speed".localize(), value: "\(viewModel.midSpeed.round(to: 1)) m/s")
                     }
                 }
             }
@@ -45,11 +45,11 @@ public struct TrackView: View {
     private var map: some View {
         Group {
             Map(position: $viewModel.currentMapCameraPosition) {
-                UserAnnotation()
-                
                 ForEach(viewModel.path) { location in
                     PathAnnotation(coordinate: location.wrapped.coordinate)
                 }
+                
+                UserAnnotation()
             }.mapControls {
                 MapUserLocationButton()
             }
@@ -69,19 +69,6 @@ public struct TrackView: View {
                 }
             }
         }
-    }
-    
-    private func StatsItem(
-        title: String,
-        value: Any
-    ) -> some View {
-        VStack {
-            Text(title)
-                .bold()
-            
-            Text("\(value)")
-        }
-        .frame(maxWidth: .infinity)
     }
 }
 

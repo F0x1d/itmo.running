@@ -16,6 +16,7 @@ let package = Package(
     ],
     dependencies: [
         .package(path: "../Data"),
+        .package(path: "../CoreUI"),
         .package(path: "../Extensions")
     ],
     targets: [
@@ -23,7 +24,11 @@ let package = Package(
             name: "FeatureHistory",
             dependencies: [
                 "Data",
+                "CoreUI",
                 "Extensions"
+            ],
+            resources: [
+                .process("Resources")
             ]
         )
     ]

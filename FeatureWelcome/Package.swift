@@ -20,6 +20,7 @@ let package = Package(
         .package(path: "../CoreArch"),
         .package(path: "../CoreDI"),
         .package(path: "../Extensions"),
+        .package(path: "../FeatureLocationApi"),
         .package(url: "https://github.com/sparrowcode/AlertKit.git", from: "5.1.8"),
         .package(url: "https://github.com/hmlongco/Factory.git", from: "2.3.0"),
         .package(url: "https://github.com/malcommac/SwiftLocation.git", from: "6.0.0")
@@ -33,6 +34,7 @@ let package = Package(
                 "CoreArch",
                 "CoreDI",
                 "Extensions",
+                "FeatureLocationApi",
                 "AlertKit",
                 "Factory",
                 "SwiftLocation"

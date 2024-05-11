@@ -10,6 +10,7 @@ import SwiftUI
 import SwiftData
 import Data
 import Extensions
+import Factory
 
 public struct HistoryView: View {
     
@@ -19,30 +20,29 @@ public struct HistoryView: View {
     ) 
     private var trainings: [Training]
     
+    @InjectedObject(\.navigator) private var navigator
+    
     public init() { }
     
     public var body: some View {
-        NavigationStack {
+        NavigationStack(path: $navigator.path) {
             List {
                 ForEach(trainings) { training in
-                    HistoryItemView(training: training)
+                    Section {
+                        HistoryItemView(training: training) {
+                            navigator.openDetails($0)
+                        }
+                    }
                 }
             }
-            .navigationTitle("history".localize(.module))
-        }
-    }
-}
-
-struct HistoryItemView: View {
-    let training: Training
-    
-    var body: some View {
-        VStack(alignment: .leading) {
-            Text("\(training.startTime.formatted())")
-            Text("\(training.endTime.formatted())")
-            
-            Text("\(training.distance) m")
-                .foregroundStyle(.secondary)
+            .navigationDestination(for: navigator.screenType) { screen in
+                switch screen {
+                case .details(let training):
+                    HistoryDetailsView(training: training)
+                }
+            }
+            .navigationTitle("history".localize())
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }

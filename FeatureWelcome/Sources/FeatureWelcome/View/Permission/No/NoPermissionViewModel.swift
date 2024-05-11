@@ -12,36 +12,33 @@ import CoreLocation
 import SwiftLocation
 import CoreDI
 import Factory
+import FeatureLocationApi
 
 final class NoPermissionViewModel: BaseViewModel {
         
     @Injected(\.location) private var location
     @Injected(\.navigator) private var navigator
     
+    @Injected(\.locationPermissionStore) private var locationPermissionStore
+    
     override init() {
         super.init()
         
         Task { [weak self] in
             guard let self else { return }
-                        
-            let result = try? await location.requestPermission(.always)
-            if result == .authorizedAlways {
-                navigator.openReadyScreen()
-            }
-                        
-            for await event in await location.startMonitoringAuthorization() {
-                if case .authorizedAlways = event.authorizationStatus {
-                    navigator.openReadyScreen()
+            
+            locationPermissionStore
+                .permissionGranted
+                .sink { [weak self] granted in
+                    if granted {
+                        self?.navigator.openReadyScreen()
+                    }
                 }
-            }
+                .store(in: &compositeSubscription)
         }
     }
     
     func openSettings() {
         UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
-    }
-    
-    deinit {
-        NSLog("DIED")
     }
 }

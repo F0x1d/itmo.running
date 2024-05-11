@@ -56,6 +56,7 @@
 		A7B049A72BD1A43D00AF69AA /* Data in Frameworks */ = {isa = PBXBuildFile; productRef = A7B049A62BD1A43D00AF69AA /* Data */; };
 		A7B049A92BD1A44300AF69AA /* Data in Frameworks */ = {isa = PBXBuildFile; productRef = A7B049A82BD1A44300AF69AA /* Data */; };
 		A7B049AB2BD1A44700AF69AA /* Data in Frameworks */ = {isa = PBXBuildFile; productRef = A7B049AA2BD1A44700AF69AA /* Data */; };
+		A7C59F892BF000DE009B2CD1 /* FeatureLocationApi in Frameworks */ = {isa = PBXBuildFile; productRef = A7C59F882BF000DE009B2CD1 /* FeatureLocationApi */; };
 		A7F8782D2B9B889C00273516 /* ITMORunningApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F8782C2B9B889C00273516 /* ITMORunningApp.swift */; };
 		A7F8782F2B9B889C00273516 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F8782E2B9B889C00273516 /* ContentView.swift */; };
 		A7F878312B9B889D00273516 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7F878302B9B889D00273516 /* Assets.xcassets */; };
@@ -120,6 +121,7 @@
 				A70098112B9CCB02009E6CE7 /* CoreDI in Frameworks */,
 				A724EE432BA77A00007A7DF7 /* FeatureSettings in Frameworks */,
 				A709408E2B9B8B8600C90238 /* CoreUI in Frameworks */,
+				A7C59F892BF000DE009B2CD1 /* FeatureLocationApi in Frameworks */,
 				A70940912B9B8BAF00C90238 /* Factory in Frameworks */,
 				A700980C2B9CC070009E6CE7 /* FeatureWelcome in Frameworks */,
 			);
@@ -352,6 +354,7 @@
 				A768338C2BA77BE4005E25B4 /* FeatureTrack */,
 				A76833962BA77E78005E25B4 /* FeatureHistory */,
 				A7B049A62BD1A43D00AF69AA /* Data */,
+				A7C59F882BF000DE009B2CD1 /* FeatureLocationApi */,
 			);
 			productName = ITMORunning;
 			productReference = A7F878292B9B889C00273516 /* ITMORunning.app */;
@@ -1060,6 +1063,10 @@
 		A7B049AA2BD1A44700AF69AA /* Data */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Data;
+		};
+		A7C59F882BF000DE009B2CD1 /* FeatureLocationApi */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FeatureLocationApi;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

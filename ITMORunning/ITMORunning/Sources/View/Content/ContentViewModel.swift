@@ -10,33 +10,33 @@ import CoreArch
 import SwiftUI
 import Factory
 import CoreLocation
+import FeatureLocationApi
 
 final class ContentViewModel: BaseViewModel {
     @Published var currentTab: ContentViewTab = .track
     @Published var locationPermissionAvailable = true
     
-    @Injected(\.location) private var location
+    @Injected(\.locationPermissionStore) private var locationPermissionStore
     @Injected(\.welcomeStore) private var welcomeStore
         
     override init() {
         super.init()
         
-        Task { [weak self] in
-            guard let self else { return }
-            
-            if welcomeStore.welcomed {
-                if let result = try? await location.requestPermission(.always) {
-                    updatePermissionStatus(result)
+        locationPermissionStore
+            .permissionGranted
+            .sink { [weak self] granted in
+                guard let self else { return }
+                
+                if welcomeStore.welcomed {
+                    withAnimation { [weak self] in
+                        self?.locationPermissionAvailable = granted
+                    }
                 }
             }
-                        
-            for await event in await location.startMonitoringAuthorization() {
-                updatePermissionStatus(event.authorizationStatus)
-            }
-        }
+            .store(in: &compositeSubscription)
     }
-    
-    private func updatePermissionStatus(_ status: CLAuthorizationStatus) {
-        locationPermissionAvailable = status == .authorizedAlways
-    }
+}
+
+enum ContentViewTab: Hashable {
+    case history, track, settings
 }

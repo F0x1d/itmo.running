@@ -69,28 +69,27 @@ final class TrackViewModel: BaseViewModel {
                     let previousLocation = path.last?.wrapped
                     let previousLocationAsList = previousLocation == nil ? [] : [previousLocation!]
                     
+                    let processedLocations: [IdentifiableLocation] = locations.compactMap { location in
+                        if now.timeIntervalSince(location.timestamp) >= 60 { return nil }
+                        if let previousLocation, location.distance(from: previousLocation) <= 3 { return nil }
+                        
+                        currentLocationId += 1
+                        return IdentifiableLocation(
+                            id: currentLocationId,
+                            location: location
+                        )
+                    }
+                    
                     withAnimation { [weak self] in
                         guard let self else { return }
                         
-                        distance += calculateDistanceFor(locations: previousLocationAsList + locations)
+                        distance += calculateDistanceFor(locations: previousLocationAsList + processedLocations.map { $0.wrapped })
                         if let newSpeed = locations.last?.speed {
                             speed = newSpeed
                         }
                         midSpeed = distance / now.timeIntervalSince(startTime)
                     }
-                    
-                    path.append(
-                        contentsOf: locations.compactMap { location in
-                            if now.timeIntervalSince(location.timestamp) >= 60 { return nil }
-                            if let previousLocation, location.distance(from: previousLocation) <= 3 { return nil }
-                            
-                            currentLocationId += 1
-                            return IdentifiableLocation(
-                                id: currentLocationId,
-                                location: location
-                            )
-                        }
-                    )
+                    path.append(contentsOf: processedLocations)
                     
                 case .didFailed(_):
                     continue
@@ -108,7 +107,12 @@ final class TrackViewModel: BaseViewModel {
                     distance: distance,
                     startTime: await startTime,
                     endTime: Date(),
-                    coordinates: path.map { $0.wrapped.coordinate }
+                    coordinates: path.map { location in
+                        IdentifiableLocationCoordinate(
+                            id: location.id,
+                            wrapped: location.wrapped.coordinate
+                        )
+                    }
                 )
             }.value
             

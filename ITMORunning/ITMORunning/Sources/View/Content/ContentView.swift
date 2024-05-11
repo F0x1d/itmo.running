@@ -17,9 +17,7 @@ struct ContentView: View {
     @InjectedObject(\.contentViewModel) private var viewModel
     
     @InjectedObject(\.welcomeStore) private var welcomeStore
-    
-    @Environment(\.scenePhase) private var scenePhase
-    
+        
     var body: some View {
         Group {
             if welcomeStore.welcomed {
@@ -57,10 +55,6 @@ struct ContentView: View {
             }
         }
     }
-}
-
-enum ContentViewTab: Hashable {
-    case history, track, settings
 }
 
 #Preview {
