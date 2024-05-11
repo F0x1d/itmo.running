@@ -12,4 +12,12 @@ public extension ColorScheme {
     var isLightTheme: Bool {
         self == .light
     }
+    
+    var colorPrimary: Color {
+        isLightTheme ? .black : .white
+    }
+    
+    var colorOnPrimary: Color {
+        isLightTheme ? .white : .black
+    }
 }

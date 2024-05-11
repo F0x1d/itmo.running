@@ -19,39 +19,39 @@ public struct TrackView: View {
     public init() { }
     
     public var body: some View {
-        NavigationStack {
-            ScrollView {
-                map
-                controls
-                    .padding()
-                
-                LazyVStack {
-                    ForEach(viewModel.path) { location in
-                        Text("\(location.wrapped.speed)")
+        List {
+            map.listRowInsets(EdgeInsets())
+            
+            Section {
+                controls.listRowInsets(EdgeInsets())
+            }
+            
+            if viewModel.monitoring {
+                Section {
+                    HStack(spacing: 1) {
+                        StatsItem(title: "distance", value: "\(viewModel.distance.round(to: 1)) m")
+                        StatsItem(title: "speed", value: "\(viewModel.speed.round(to: 1)) m/s")
+                        StatsItem(title: "time", value: "\(Int(Date().timeIntervalSince(viewModel.startTime))) s")
+                    }
+                    
+                    HStack(spacing: 1) {
+                        StatsItem(title: "mid speed", value: "\(viewModel.midSpeed.round(to: 1)) m/s")
                     }
                 }
             }
-            .navigationTitle("track".localize(.module))
         }
     }
     
     private var map: some View {
         Group {
-            if let currentLocation = viewModel.currentLocation {
-                Map(
-                    position: $viewModel.currentMapCameraPosition,
-                    interactionModes: viewModel.monitoring ? [] : [.all]
-                ) {
-                    MeAnnotation(coordinate: currentLocation.coordinate)
-                    
-                    ForEach(viewModel.path) { location in
-                        PathAnnotation(coordinate: location.wrapped.coordinate)
-                    }
+            Map(position: $viewModel.currentMapCameraPosition) {
+                UserAnnotation()
+                
+                ForEach(viewModel.path) { location in
+                    PathAnnotation(coordinate: location.wrapped.coordinate)
                 }
-            } else {
-                VStack {
-                    ProgressView()
-                }
+            }.mapControls {
+                MapUserLocationButton()
             }
         }
         .aspectRatio(1, contentMode: .fill)
@@ -60,18 +60,28 @@ public struct TrackView: View {
     private var controls: some View {
         Group {
             if viewModel.monitoring {
-                OutlinedButton("stop") {
+                OutlinedButton("stop".localize(.module)) {
                     viewModel.stopMonitoring()
                 }
             } else {
-                FilledButton(
-                    "start",
-                    disabled: viewModel.currentLocation == nil
-                ) {
+                FilledButton("start".localize(.module)) {
                     viewModel.startMonitoring()
                 }
             }
         }
+    }
+    
+    private func StatsItem(
+        title: String,
+        value: Any
+    ) -> some View {
+        VStack {
+            Text(title)
+                .bold()
+            
+            Text("\(value)")
+        }
+        .frame(maxWidth: .infinity)
     }
 }
 

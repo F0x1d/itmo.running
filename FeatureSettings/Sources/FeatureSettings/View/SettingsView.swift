@@ -25,6 +25,7 @@ public struct SettingsView: View {
                             .frame(width: 50, height: 50)
                         
                         Text("app_name".localize(.module))
+                            .bold()
                             .padding(.horizontal, 1)
                     }
                 }

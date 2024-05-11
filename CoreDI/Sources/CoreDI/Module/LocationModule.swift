@@ -25,6 +25,7 @@ public extension Container {
                 locationManager: self.locationManager(),
                 allowsBackgroundLocationUpdates: true
             )
+            location.accuracy = LocationAccuracy.bestForNavigation
             location.activityType = CLActivityType.fitness
             return location
         }

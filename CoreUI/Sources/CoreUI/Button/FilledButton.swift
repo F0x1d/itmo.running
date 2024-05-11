@@ -27,8 +27,8 @@ public struct FilledButton: View {
     public var body: some View {
         BaseButton(label, loading: loading, disabled: disabled, action: action)
             .buttonStyle(.borderedProminent)
-            .foregroundStyle(colorScheme.isLightTheme ? .white : .black)
-            .tint(colorScheme.isLightTheme ? .black : .white)
+            .foregroundStyle(colorScheme.colorOnPrimary)
+            .tint(colorScheme.colorPrimary)
     }
 }
 

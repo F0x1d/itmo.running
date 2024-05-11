@@ -9,10 +9,11 @@ import Foundation
 import CoreArch
 import SwiftUI
 import Factory
+import CoreLocation
 
 final class ContentViewModel: BaseViewModel {
     @Published var currentTab: ContentViewTab = .track
-    @Published var locationPermissionAvailable = false
+    @Published var locationPermissionAvailable = true
     
     @Injected(\.location) private var location
     @Injected(\.welcomeStore) private var welcomeStore
@@ -25,13 +26,17 @@ final class ContentViewModel: BaseViewModel {
             
             if welcomeStore.welcomed {
                 if let result = try? await location.requestPermission(.always) {
-                    locationPermissionAvailable = result == .authorizedAlways
+                    updatePermissionStatus(result)
                 }
             }
                         
             for await event in await location.startMonitoringAuthorization() {
-                locationPermissionAvailable = event.authorizationStatus == .authorizedAlways
+                updatePermissionStatus(event.authorizationStatus)
             }
         }
+    }
+    
+    private func updatePermissionStatus(_ status: CLAuthorizationStatus) {
+        locationPermissionAvailable = status == .authorizedAlways
     }
 }

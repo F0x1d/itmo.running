@@ -677,6 +677,9 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ITMORunning/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = itmo.running;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Permission is needed to monitor your runnings";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Permission is needed to monitor your runnings";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Permission is needed to monitor your runnings";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -718,6 +721,9 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ITMORunning/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = itmo.running;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Permission is needed to monitor your runnings";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Permission is needed to monitor your runnings";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Permission is needed to monitor your runnings";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;

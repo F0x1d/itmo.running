@@ -16,46 +16,42 @@ import CoreLocation
 import SwiftLocation
 
 final class TrackViewModel: BaseViewModel {
-    @Published var currentLocation: CLLocation? = nil
-    @Published var currentMapCameraPosition = MapCameraPosition.automatic
+    
+    @Published var currentMapCameraPosition = MapCameraPosition.userLocation(
+        followsHeading: true,
+        fallback: .automatic
+    )
     
     @Published var monitoring = false
     @Published var path = [IdentifiableLocation]()
+    
+    @Published var distance: Double = 0
+    @Published var speed: Double = 0
+    @Published var midSpeed: Double = 0
+    @Published var startTime = Date()
     
     @Injected(\.location) private var location
     @Injected(\.modelContext) private var modelContext
     
     private var monitoringTask: Task<Void, Error>? = nil
     
-    override init() {
-        super.init()
-        
-        Task {
-            // Initial
-            while !Task.isCancelled {
-                do {
-                    updateLocation(with: try await location.requestLocation().location)
-                    break
-                } catch {
-                    try? await Task.sleep(for: .seconds(1))
-                }
-            }
-        }
-    }
-    
     func startMonitoring() {
         withAnimation {
+            distance = 0
+            speed = 0
+            midSpeed = 0
+            startTime = Date()
             monitoring = true
         }
         
-        var currentId = 0
+        // falling back to users location
+        currentMapCameraPosition = .userLocation(
+            followsHeading: true,
+            fallback: .automatic
+        )
         
-        if let currentLocation {
-            path.append(
-                IdentifiableLocation(id: currentId, location: currentLocation)
-            )
-        }
-                
+        var currentLocationId = 0
+        
         monitoringTask = Task { [weak self] in
             guard let self else { return }
                         
@@ -67,18 +63,35 @@ final class TrackViewModel: BaseViewModel {
                     continue
                 case .didResume:
                     continue
+                    
                 case let .didUpdateLocations(locations):
-                    guard let lastLocation = locations.last else { continue }
+                    let now = Date()
+                    let previousLocation = path.last?.wrapped
+                    let previousLocationAsList = previousLocation == nil ? [] : [previousLocation!]
+                    
+                    withAnimation { [weak self] in
+                        guard let self else { return }
+                        
+                        distance += calculateDistanceFor(locations: previousLocationAsList + locations)
+                        if let newSpeed = locations.last?.speed {
+                            speed = newSpeed
+                        }
+                        midSpeed = distance / now.timeIntervalSince(startTime)
+                    }
                     
                     path.append(
-                        contentsOf: locations.map { location in
-                            currentId += 1
-                            return IdentifiableLocation(id: currentId, location: location)
+                        contentsOf: locations.compactMap { location in
+                            if now.timeIntervalSince(location.timestamp) >= 60 { return nil }
+                            if let previousLocation, location.distance(from: previousLocation) <= 3 { return nil }
+                            
+                            currentLocationId += 1
+                            return IdentifiableLocation(
+                                id: currentLocationId,
+                                location: location
+                            )
                         }
                     )
                     
-                    updateLocation(with: lastLocation)
-
                 case .didFailed(_):
                     continue
                 }
@@ -91,24 +104,10 @@ final class TrackViewModel: BaseViewModel {
             let training: Training? = await Task { @TrackViewModelActor [weak self] in
                 guard let self else { return nil }
                 
-                var distance: Double = 0
-                var prevPoint: CLLocation? = nil
-                for location in await path {
-                    guard var prevPoint else {
-                        prevPoint = location.wrapped
-                        continue
-                    }
-                    
-                    let nextPoint = location.wrapped
-                    
-                    distance += prevPoint.distance(from: nextPoint)
-                    prevPoint = nextPoint
-                }
-                
                 return await Training(
                     distance: distance,
-                    startTime: path.first!.wrapped.timestamp,
-                    endTime: path.last!.wrapped.timestamp,
+                    startTime: await startTime,
+                    endTime: Date(),
                     coordinates: path.map { $0.wrapped.coordinate }
                 )
             }.value
@@ -128,23 +127,26 @@ final class TrackViewModel: BaseViewModel {
     
     func stopMonitoring() {
         monitoringTask?.cancel()
+        monitoringTask = nil
     }
     
-    private func updateLocation(with location: CLLocation?) {
-        currentLocation = location
+    private func calculateDistanceFor(locations: [CLLocation]) -> Double {
+        var distance: Double = 0
+        var prevPoint: CLLocation? = nil
         
-        withAnimation {
-            if let location {
-                currentMapCameraPosition = MapCameraPosition.region(
-                    MKCoordinateRegion(
-                        center: location.coordinate,
-                        span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
-                    )
-                )
-            } else {
-                currentMapCameraPosition = MapCameraPosition.automatic
+        for location in locations {
+            guard var prevPoint else {
+                prevPoint = location
+                continue
             }
+            
+            let nextPoint = location
+            
+            distance += prevPoint.distance(from: nextPoint)
+            prevPoint = nextPoint
         }
+        
+        return distance
     }
 }
 

@@ -13,7 +13,11 @@ import Extensions
 
 public struct HistoryView: View {
     
-    @Query private var trainings: [Training]
+    @Query(
+        sort: \Training.endTime,
+        order: .reverse
+    ) 
+    private var trainings: [Training]
     
     public init() { }
     

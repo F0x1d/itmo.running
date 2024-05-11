@@ -4,17 +4,11 @@
 <dict>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Permission is needed to monitor your runnings</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Permission is needed to monitor your runnings</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Permission is needed to monitor your runnings</string>
-	<key>allowsBackgroundLocationUpdates</key>
-	<string>YES</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>location</string>
 	</array>
+	<key>allowsBackgroundLocationUpdates</key>
+	<string>YES</string>
 </dict>
 </plist>
