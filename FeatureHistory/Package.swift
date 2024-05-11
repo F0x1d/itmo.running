@@ -17,7 +17,10 @@ let package = Package(
     dependencies: [
         .package(path: "../Data"),
         .package(path: "../CoreUI"),
-        .package(path: "../Extensions")
+        .package(path: "../CoreNavigation"),
+        .package(path: "../Extensions"),
+        .package(url: "https://github.com/hmlongco/Factory.git", from: "2.3.0"),
+        .package(url: "https://github.com/malcommac/SwiftLocation.git", from: "6.0.0")
     ],
     targets: [
         .target(
@@ -25,7 +28,10 @@ let package = Package(
             dependencies: [
                 "Data",
                 "CoreUI",
-                "Extensions"
+                "CoreNavigation",
+                "Extensions",
+                "Factory",
+                "SwiftLocation"
             ],
             resources: [
                 .process("Resources")
