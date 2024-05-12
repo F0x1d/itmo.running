@@ -16,7 +16,6 @@ let package = Package(
     ],
     dependencies: [
         .package(path: "../CoreDI"),
-        .package(path: "../FeatureWelcome"),
         .package(url: "https://github.com/hmlongco/Factory.git", from: "2.3.0"),
         .package(url: "https://github.com/malcommac/SwiftLocation.git", from: "6.0.0")
     ],
@@ -25,10 +24,10 @@ let package = Package(
             name: "CoreTesting",
             dependencies: [
                 "CoreDI",
-                "FeatureWelcome",
                 "Factory",
                 "SwiftLocation"
-            ]
+            ],
+            linkerSettings: [.linkedFramework("XCTest")]
         )
     ]
 )

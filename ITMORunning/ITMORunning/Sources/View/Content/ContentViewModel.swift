@@ -16,14 +16,14 @@ final class ContentViewModel: BaseViewModel {
     @Published var currentTab: ContentViewTab = .track
     @Published var locationPermissionAvailable = true
     
-    @Injected(\.locationPermissionStore) private var locationPermissionStore
+    @Injected(\.locationPermissionRepository) private var locationPermissionRepository
     @Injected(\.welcomeStore) private var welcomeStore
         
     override init() {
         super.init()
         
-        locationPermissionStore
-            .permissionGranted
+        locationPermissionRepository
+            .observePermissionStatus(checkInitially: welcomeStore.welcomed)
             .sink { [weak self] granted in
                 guard let self else { return }
                 

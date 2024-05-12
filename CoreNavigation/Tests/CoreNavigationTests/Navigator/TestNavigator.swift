@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  TestNavigator.swift
 //  
 //
 //  Created by Maksim Zoteev on 08.03.2024.

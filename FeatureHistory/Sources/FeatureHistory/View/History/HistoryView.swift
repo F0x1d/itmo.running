@@ -22,6 +22,8 @@ public struct HistoryView: View {
     
     @InjectedObject(\.navigator) private var navigator
     
+    @Environment(\.modelContext) private var modelContext
+    
     public init() { }
     
     public var body: some View {
@@ -29,9 +31,17 @@ public struct HistoryView: View {
             List {
                 ForEach(trainings) { training in
                     Section {
-                        HistoryItemView(training: training) {
-                            navigator.openDetails($0)
-                        }
+                        HistoryItemView(training: training)
+                            .onTapGesture {
+                                navigator.openDetails(training)
+                            }
+                            .contextMenu {
+                                Button(role: .destructive) {
+                                    modelContext.delete(training)
+                                } label: {
+                                    Label("delete".localize(.module), systemImage: "trash")
+                                }
+                            }
                     }
                 }
             }

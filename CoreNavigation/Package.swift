@@ -14,7 +14,14 @@ let package = Package(
             targets: ["CoreNavigation"]
         )
     ],
+    dependencies: [
+        .package(path: "../CoreTesting")
+    ],
     targets: [
-        .target(name: "CoreNavigation")
+        .target(name: "CoreNavigation"),
+        .testTarget(
+            name: "CoreNavigationTests",
+            dependencies: ["CoreNavigation", "CoreTesting"]
+        )
     ]
 )

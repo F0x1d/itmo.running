@@ -9,6 +9,7 @@ import Foundation
 import XCTest
 import CoreDI
 import CoreTesting
+import FeatureWelcome
 @testable import ITMORunning
 
 final class WelcomeWizardUITests: XCTestCase {

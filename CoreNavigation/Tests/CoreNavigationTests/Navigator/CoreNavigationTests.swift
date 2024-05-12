@@ -1,7 +1,8 @@
 import XCTest
+import CoreTesting
 @testable import CoreNavigation
 
-final class CoreNavigationTests: XCTestCase {
+final class CoreNavigationTests: BaseXCTestCase {
     
     func testShouldOpenFirstScreen() {
         let navigator = TestNavigator()
@@ -16,6 +17,7 @@ final class CoreNavigationTests: XCTestCase {
         
         navigator.openFirstScreen()
         navigator.openSecondScreen()
+        
         
         navigator.popBackStack()
         navigator.popBackStack()

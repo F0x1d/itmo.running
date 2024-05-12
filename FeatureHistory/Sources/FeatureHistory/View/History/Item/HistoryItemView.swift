@@ -14,7 +14,6 @@ import CoreLocation
 
 struct HistoryItemView: View {
     let training: Training
-    let onItemClicked: (Training) -> Void
     
     var body: some View {
         VStack(
@@ -60,7 +59,6 @@ struct HistoryItemView: View {
             .aspectRatio(3.5, contentMode: .fill)
         }
         .listRowInsets(EdgeInsets())
-        .onTapGesture { onItemClicked(training) }
     }
 }
 
@@ -73,7 +71,6 @@ struct HistoryItemView: View {
             coordinates: [
                 IdentifiableLocationCoordinate(id: 0, wrapped: CLLocationCoordinate2D())
             ]
-        ),
-        onItemClicked: { _ in }
+        )
     )
 }

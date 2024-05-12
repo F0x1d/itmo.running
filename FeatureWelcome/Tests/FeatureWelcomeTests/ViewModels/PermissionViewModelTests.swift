@@ -11,17 +11,16 @@ import CoreDI
 import CoreTesting
 @testable import FeatureWelcome
 
-final class PermissionViewModelTests: XCTestCase {
-    override func setUp() async throws {
-        di.reset()
-    }
+final class PermissionViewModelTests: BaseXCTestCase {
     
     func testShouldRequestPermissionTest() async {
         var requestedPermission = false
-        withLocationManager(whenInUse: {
-            requestedPermission = true
-            return .authorizedWhenInUse
-        })
+        withLocationManager(
+            whenInUse: {
+                requestedPermission = true
+                return .authorizedWhenInUse
+            }
+        )
         
         let viewModel = await di.permissionViewModel()
         

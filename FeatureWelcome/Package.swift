@@ -19,6 +19,7 @@ let package = Package(
         .package(path: "../CoreUI"),
         .package(path: "../CoreArch"),
         .package(path: "../CoreDI"),
+        .package(path: "../CoreTesting"),
         .package(path: "../Extensions"),
         .package(path: "../FeatureLocationApi"),
         .package(url: "https://github.com/sparrowcode/AlertKit.git", from: "5.1.8"),
@@ -33,6 +34,7 @@ let package = Package(
                 "CoreUI",
                 "CoreArch",
                 "CoreDI",
+                "CoreTesting",
                 "Extensions",
                 "FeatureLocationApi",
                 "AlertKit",
@@ -42,6 +44,10 @@ let package = Package(
             resources: [
                 .process("Resources")
             ]
+        ),
+        .testTarget(
+            name: "FeatureWelcomeTests",
+            dependencies: ["FeatureWelcome"]
         )
     ]
 )

@@ -6,21 +6,7 @@
 //
 
 import Foundation
-import Factory
 
-protocol TestingRule {
-    func setup()
-}
-
-fileprivate let rules: [any TestingRule] = [
-    LocationManagerRule(),
-    WelcomedRule()
-]
-
-extension Container: AutoRegistering {
-    public func autoRegister() {
-        for rule in rules {
-            rule.setup()
-        }
-    }
+public protocol TestingRule {
+    static func setup()
 }

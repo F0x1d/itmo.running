@@ -16,6 +16,7 @@ let package = Package(
     ],
     dependencies: [
         .package(path: "../CoreDI"),
+        .package(path: "../CoreTesting"),
         .package(url: "https://github.com/hmlongco/Factory.git", from: "2.3.0"),
         .package(url: "https://github.com/malcommac/SwiftLocation.git", from: "6.0.0")
     ],
@@ -27,6 +28,10 @@ let package = Package(
                 "Factory",
                 "SwiftLocation"
             ]
+        ),
+        .testTarget(
+            name: "FeatureLocationApiTests",
+            dependencies: ["FeatureLocationApi", "CoreTesting"]
         )
     ]
 )

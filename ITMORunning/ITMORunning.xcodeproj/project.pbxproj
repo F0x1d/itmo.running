@@ -24,10 +24,6 @@
 		A712C2A22B9E3C010095F049 /* FeatureWelcome in Frameworks */ = {isa = PBXBuildFile; productRef = A712C2A12B9E3C010095F049 /* FeatureWelcome */; };
 		A712C2A42B9E3C220095F049 /* CoreDI in Frameworks */ = {isa = PBXBuildFile; productRef = A712C2A32B9E3C220095F049 /* CoreDI */; };
 		A712C2A82B9E4B1D0095F049 /* ApplicationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A712C2A72B9E4B1D0095F049 /* ApplicationExtensions.swift */; };
-		A712C2AC2B9E53730095F049 /* AlwaysPermissionViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A712C2AB2B9E53730095F049 /* AlwaysPermissionViewModelTests.swift */; };
-		A712C2B02B9E537C0095F049 /* PermissionViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A712C2AF2B9E537C0095F049 /* PermissionViewModelTests.swift */; };
-		A712C2B32B9E540D0095F049 /* TestNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A712C2B22B9E540D0095F049 /* TestNavigator.swift */; };
-		A712C2B52B9E54120095F049 /* CoreNavigationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A712C2B42B9E54120095F049 /* CoreNavigationTests.swift */; };
 		A712C2B72B9E548E0095F049 /* CoreArch in Frameworks */ = {isa = PBXBuildFile; productRef = A712C2B62B9E548E0095F049 /* CoreArch */; };
 		A712C2B92B9E548E0095F049 /* CoreDI in Frameworks */ = {isa = PBXBuildFile; productRef = A712C2B82B9E548E0095F049 /* CoreDI */; };
 		A712C2BB2B9E548E0095F049 /* CoreNavigation in Frameworks */ = {isa = PBXBuildFile; productRef = A712C2BA2B9E548E0095F049 /* CoreNavigation */; };
@@ -44,6 +40,7 @@
 		A724EE412BA7794E007A7DF7 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = A724EE402BA7794E007A7DF7 /* Localizable.xcstrings */; };
 		A724EE432BA77A00007A7DF7 /* FeatureSettings in Frameworks */ = {isa = PBXBuildFile; productRef = A724EE422BA77A00007A7DF7 /* FeatureSettings */; };
 		A724EE452BA77A04007A7DF7 /* FeatureSettings in Frameworks */ = {isa = PBXBuildFile; productRef = A724EE442BA77A04007A7DF7 /* FeatureSettings */; };
+		A72B9CED2BF01EC5003FF188 /* ContentViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72B9CEC2BF01EC5003FF188 /* ContentViewModelTests.swift */; };
 		A76833882BA77AC4005E25B4 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76833872BA77AC4005E25B4 /* ContentViewModel.swift */; };
 		A768338B2BA77AE7005E25B4 /* ViewModelsModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = A768338A2BA77AE7005E25B4 /* ViewModelsModule.swift */; };
 		A768338D2BA77BE4005E25B4 /* FeatureTrack in Frameworks */ = {isa = PBXBuildFile; productRef = A768338C2BA77BE4005E25B4 /* FeatureTrack */; };
@@ -52,10 +49,13 @@
 		A76833932BA77E6C005E25B4 /* FeatureHistory in Frameworks */ = {isa = PBXBuildFile; productRef = A76833922BA77E6C005E25B4 /* FeatureHistory */; };
 		A76833952BA77E71005E25B4 /* FeatureHistory in Frameworks */ = {isa = PBXBuildFile; productRef = A76833942BA77E71005E25B4 /* FeatureHistory */; };
 		A76833972BA77E78005E25B4 /* FeatureHistory in Frameworks */ = {isa = PBXBuildFile; productRef = A76833962BA77E78005E25B4 /* FeatureHistory */; };
+		A769505B2BF021DF00E1E1DF /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = A769505A2BF021DF00E1E1DF /* Factory */; };
 		A7B049A52BD1259A00AF69AA /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A7B049A42BD1259A00AF69AA /* Settings.bundle */; };
 		A7B049A72BD1A43D00AF69AA /* Data in Frameworks */ = {isa = PBXBuildFile; productRef = A7B049A62BD1A43D00AF69AA /* Data */; };
 		A7B049A92BD1A44300AF69AA /* Data in Frameworks */ = {isa = PBXBuildFile; productRef = A7B049A82BD1A44300AF69AA /* Data */; };
 		A7B049AB2BD1A44700AF69AA /* Data in Frameworks */ = {isa = PBXBuildFile; productRef = A7B049AA2BD1A44700AF69AA /* Data */; };
+		A7BCE0132BF055FC0061834A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7BCE0112BF04EF80061834A /* XCTest.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		A7BCE0162BF0CD8C0061834A /* TestRulesModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BCE0152BF0CD8C0061834A /* TestRulesModule.swift */; };
 		A7C59F892BF000DE009B2CD1 /* FeatureLocationApi in Frameworks */ = {isa = PBXBuildFile; productRef = A7C59F882BF000DE009B2CD1 /* FeatureLocationApi */; };
 		A7F8782D2B9B889C00273516 /* ITMORunningApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F8782C2B9B889C00273516 /* ITMORunningApp.swift */; };
 		A7F8782F2B9B889C00273516 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F8782E2B9B889C00273516 /* ContentView.swift */; };
@@ -87,14 +87,13 @@
 		A700981A2B9E10F6009E6CE7 /* WelcomeWizardUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeWizardUITests.swift; sourceTree = "<group>"; };
 		A712C2A52B9E41D20095F049 /* ITMORunning.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = ITMORunning.xctestplan; sourceTree = "<group>"; };
 		A712C2A72B9E4B1D0095F049 /* ApplicationExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationExtensions.swift; sourceTree = "<group>"; };
-		A712C2AB2B9E53730095F049 /* AlwaysPermissionViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlwaysPermissionViewModelTests.swift; sourceTree = "<group>"; };
-		A712C2AF2B9E537C0095F049 /* PermissionViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionViewModelTests.swift; sourceTree = "<group>"; };
-		A712C2B22B9E540D0095F049 /* TestNavigator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestNavigator.swift; sourceTree = "<group>"; };
-		A712C2B42B9E54120095F049 /* CoreNavigationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreNavigationTests.swift; sourceTree = "<group>"; };
 		A724EE402BA7794E007A7DF7 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		A72B9CEC2BF01EC5003FF188 /* ContentViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModelTests.swift; sourceTree = "<group>"; };
 		A76833872BA77AC4005E25B4 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		A768338A2BA77AE7005E25B4 /* ViewModelsModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelsModule.swift; sourceTree = "<group>"; };
 		A7B049A42BD1259A00AF69AA /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		A7BCE0112BF04EF80061834A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		A7BCE0152BF0CD8C0061834A /* TestRulesModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestRulesModule.swift; sourceTree = "<group>"; };
 		A7F878292B9B889C00273516 /* ITMORunning.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ITMORunning.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7F8782C2B9B889C00273516 /* ITMORunningApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITMORunningApp.swift; sourceTree = "<group>"; };
 		A7F8782E2B9B889C00273516 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -110,6 +109,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7BCE0132BF055FC0061834A /* XCTest.framework in Frameworks */,
 				A76833972BA77E78005E25B4 /* FeatureHistory in Frameworks */,
 				A7B049A72BD1A43D00AF69AA /* Data in Frameworks */,
 				A709408A2B9B8B7D00C90238 /* CoreArch in Frameworks */,
@@ -154,6 +154,7 @@
 				A712C2A42B9E3C220095F049 /* CoreDI in Frameworks */,
 				A712C2A22B9E3C010095F049 /* FeatureWelcome in Frameworks */,
 				A7B049AB2BD1A44700AF69AA /* Data in Frameworks */,
+				A769505B2BF021DF00E1E1DF /* Factory in Frameworks */,
 				A712C2A02B9E3BFD0095F049 /* CoreTesting in Frameworks */,
 				A712C2C32B9E549C0095F049 /* CoreArch in Frameworks */,
 				A76833932BA77E6C005E25B4 /* FeatureHistory in Frameworks */,
@@ -216,6 +217,7 @@
 		A70940882B9B8B7D00C90238 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A7BCE0112BF04EF80061834A /* XCTest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -228,36 +230,19 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
-		A712C2A92B9E535E0095F049 /* Welcome */ = {
+		A72B9CEB2BF01EB2003FF188 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				A712C2AA2B9E53630095F049 /* ViewModels */,
-			);
-			path = Welcome;
-			sourceTree = "<group>";
-		};
-		A712C2AA2B9E53630095F049 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				A712C2AB2B9E53730095F049 /* AlwaysPermissionViewModelTests.swift */,
-				A712C2AF2B9E537C0095F049 /* PermissionViewModelTests.swift */,
+				A72B9CEC2BF01EC5003FF188 /* ContentViewModelTests.swift */,
 			);
 			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		A712C2B12B9E53FE0095F049 /* Navigation */ = {
-			isa = PBXGroup;
-			children = (
-				A712C2B42B9E54120095F049 /* CoreNavigationTests.swift */,
-				A712C2B22B9E540D0095F049 /* TestNavigator.swift */,
-			);
-			path = Navigation;
 			sourceTree = "<group>";
 		};
 		A76833892BA77ADF005E25B4 /* DI */ = {
 			isa = PBXGroup;
 			children = (
 				A768338A2BA77AE7005E25B4 /* ViewModelsModule.swift */,
+				A7BCE0152BF0CD8C0061834A /* TestRulesModule.swift */,
 			);
 			path = DI;
 			sourceTree = "<group>";
@@ -309,8 +294,7 @@
 		A7F8783D2B9B889D00273516 /* ITMORunningTests */ = {
 			isa = PBXGroup;
 			children = (
-				A712C2B12B9E53FE0095F049 /* Navigation */,
-				A712C2A92B9E535E0095F049 /* Welcome */,
+				A72B9CEB2BF01EB2003FF188 /* ViewModels */,
 			);
 			path = ITMORunningTests;
 			sourceTree = "<group>";
@@ -419,6 +403,7 @@
 				A76833902BA77BF0005E25B4 /* FeatureTrack */,
 				A76833922BA77E6C005E25B4 /* FeatureHistory */,
 				A7B049AA2BD1A44700AF69AA /* Data */,
+				A769505A2BF021DF00E1E1DF /* Factory */,
 			);
 			productName = ITMORunningUITests;
 			productReference = A7F878442B9B889D00273516 /* ITMORunningUITests.xctest */;
@@ -439,6 +424,7 @@
 					};
 					A7F878392B9B889D00273516 = {
 						CreatedOnToolsVersion = 15.3;
+						LastSwiftMigration = 1530;
 						TestTargetID = A7F878282B9B889C00273516;
 					};
 					A7F878432B9B889D00273516 = {
@@ -505,6 +491,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7BCE0162BF0CD8C0061834A /* TestRulesModule.swift in Sources */,
 				A7F8782F2B9B889C00273516 /* ContentView.swift in Sources */,
 				A7F8782D2B9B889C00273516 /* ITMORunningApp.swift in Sources */,
 				A768338B2BA77AE7005E25B4 /* ViewModelsModule.swift in Sources */,
@@ -516,10 +503,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A712C2B52B9E54120095F049 /* CoreNavigationTests.swift in Sources */,
-				A712C2B32B9E540D0095F049 /* TestNavigator.swift in Sources */,
-				A712C2AC2B9E53730095F049 /* AlwaysPermissionViewModelTests.swift in Sources */,
-				A712C2B02B9E537C0095F049 /* PermissionViewModelTests.swift in Sources */,
+				A72B9CED2BF01EC5003FF188 /* ContentViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -608,6 +592,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -661,6 +646,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -677,6 +663,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ITMORunning/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = itmo.running;
@@ -721,6 +708,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ITMORunning/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = itmo.running;
@@ -757,6 +745,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4L86368TJ9;
@@ -769,6 +758,7 @@
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ITMORunning.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ITMORunning";
@@ -780,6 +770,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4L86368TJ9;
@@ -1051,6 +1042,11 @@
 		A76833962BA77E78005E25B4 /* FeatureHistory */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = FeatureHistory;
+		};
+		A769505A2BF021DF00E1E1DF /* Factory */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A709408F2B9B8BAF00C90238 /* XCRemoteSwiftPackageReference "Factory" */;
+			productName = Factory;
 		};
 		A7B049A62BD1A43D00AF69AA /* Data */ = {
 			isa = XCSwiftPackageProductDependency;

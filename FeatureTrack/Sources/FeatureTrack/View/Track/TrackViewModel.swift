@@ -44,7 +44,7 @@ final class TrackViewModel: BaseViewModel {
             monitoring = true
         }
         
-        // falling back to users location
+        // falling back to user's location
         currentMapCameraPosition = .userLocation(
             followsHeading: true,
             fallback: .automatic
@@ -71,7 +71,7 @@ final class TrackViewModel: BaseViewModel {
                     
                     let processedLocations: [IdentifiableLocation] = locations.compactMap { location in
                         if now.timeIntervalSince(location.timestamp) >= 60 { return nil }
-                        if let previousLocation, location.distance(from: previousLocation) <= 3 { return nil }
+                        if let previousLocation, location.distance(from: previousLocation) <= 10 { return nil }
                         
                         currentLocationId += 1
                         return IdentifiableLocation(
@@ -85,7 +85,7 @@ final class TrackViewModel: BaseViewModel {
                         
                         distance += calculateDistanceFor(locations: previousLocationAsList + processedLocations.map { $0.wrapped })
                         if let newSpeed = locations.last?.speed {
-                            speed = newSpeed
+                            speed = newSpeed >= 0 ? newSpeed : 0
                         }
                         midSpeed = distance / now.timeIntervalSince(startTime)
                     }
@@ -98,26 +98,26 @@ final class TrackViewModel: BaseViewModel {
             
             location.stopUpdatingLocation()
             
-            if path.isEmpty { return }
-            
-            let training: Training? = await Task { @TrackViewModelActor [weak self] in
-                guard let self else { return nil }
+            if path.count > 1 {
+                let training: Training? = await Task { @TrackViewModelActor [weak self] in
+                    guard let self else { return nil }
+                    
+                    return await Training(
+                        distance: distance,
+                        startTime: await startTime,
+                        endTime: Date(),
+                        coordinates: path.map { location in
+                            IdentifiableLocationCoordinate(
+                                id: location.id,
+                                wrapped: location.wrapped.coordinate
+                            )
+                        }
+                    )
+                }.value
                 
-                return await Training(
-                    distance: distance,
-                    startTime: await startTime,
-                    endTime: Date(),
-                    coordinates: path.map { location in
-                        IdentifiableLocationCoordinate(
-                            id: location.id,
-                            wrapped: location.wrapped.coordinate
-                        )
-                    }
-                )
-            }.value
-            
-            if let training {
-                modelContext.insert(training)
+                if let training {
+                    modelContext.insert(training)
+                }
             }
             
             withAnimation { [weak self] in

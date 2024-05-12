@@ -14,16 +14,37 @@
   "testTargets" : [
     {
       "target" : {
-        "containerPath" : "container:ITMORunning.xcodeproj",
+        "containerPath" : "container:ITMORunning\/ITMORunning.xcodeproj",
+        "identifier" : "A7F878432B9B889D00273516",
+        "name" : "ITMORunningUITests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:ITMORunning\/ITMORunning.xcodeproj",
         "identifier" : "A7F878392B9B889D00273516",
         "name" : "ITMORunningTests"
       }
     },
     {
       "target" : {
-        "containerPath" : "container:ITMORunning.xcodeproj",
-        "identifier" : "A7F878432B9B889D00273516",
-        "name" : "ITMORunningUITests"
+        "containerPath" : "container:CoreNavigation",
+        "identifier" : "CoreNavigationTests",
+        "name" : "CoreNavigationTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:FeatureWelcome",
+        "identifier" : "FeatureWelcomeTests",
+        "name" : "FeatureWelcomeTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:FeatureLocationApi",
+        "identifier" : "FeatureLocationApiTests",
+        "name" : "FeatureLocationApiTests"
       }
     }
   ],

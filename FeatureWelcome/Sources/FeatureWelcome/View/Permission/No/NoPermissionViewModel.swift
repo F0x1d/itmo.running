@@ -16,26 +16,26 @@ import FeatureLocationApi
 
 final class NoPermissionViewModel: BaseViewModel {
         
-    @Injected(\.location) private var location
     @Injected(\.navigator) private var navigator
-    
-    @Injected(\.locationPermissionStore) private var locationPermissionStore
+    @Injected(\.locationPermissionRepository) private var locationPermissionRepository
     
     override init() {
         super.init()
         
-        Task { [weak self] in
-            guard let self else { return }
-            
-            locationPermissionStore
-                .permissionGranted
-                .sink { [weak self] granted in
-                    if granted {
-                        self?.navigator.openReadyScreen()
-                    }
+        var waiting = true
+        
+        locationPermissionRepository
+            .observePermissionStatus()
+            .prefix(
+                while: { _ in waiting }
+            )
+            .sink { [weak self] granted in
+                if granted {
+                    waiting = false
+                    self?.navigator.openReadyScreen()
                 }
-                .store(in: &compositeSubscription)
-        }
+            }
+            .store(in: &compositeSubscription)
     }
     
     func openSettings() {
