@@ -71,7 +71,7 @@ final class TrackViewModel: BaseViewModel {
                     
                     let processedLocations: [IdentifiableLocation] = locations.compactMap { location in
                         if now.timeIntervalSince(location.timestamp) >= 60 { return nil }
-                        if let previousLocation, location.distance(from: previousLocation) <= 10 { return nil }
+                        if let previousLocation, location.distance(from: previousLocation) <= 6 { return nil }
                         
                         currentLocationId += 1
                         return IdentifiableLocation(
