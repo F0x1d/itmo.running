@@ -11,13 +11,17 @@ let package = Package(
     products: [
         .library(
             name: "CoreNavigation",
-            targets: ["CoreNavigation"]),
+            targets: ["CoreNavigation"]
+        )
+    ],
+    dependencies: [
+        .package(path: "../CoreTesting")
     ],
     targets: [
-        .target(
-            name: "CoreNavigation"),
+        .target(name: "CoreNavigation"),
         .testTarget(
             name: "CoreNavigationTests",
-            dependencies: ["CoreNavigation"]),
+            dependencies: ["CoreNavigation", "CoreTesting"]
+        )
     ]
 )

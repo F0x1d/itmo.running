@@ -5,6 +5,9 @@
       location = "group:ITMORunning/ITMORunning.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:Data">
+   </FileRef>
+   <FileRef
       location = "group:CoreNavigation">
    </FileRef>
    <FileRef
@@ -17,9 +20,24 @@
       location = "group:CoreDI">
    </FileRef>
    <FileRef
+      location = "group:CoreTesting">
+   </FileRef>
+   <FileRef
       location = "group:Extensions">
    </FileRef>
    <FileRef
+      location = "group:FeatureLocationApi">
+   </FileRef>
+   <FileRef
       location = "group:FeatureWelcome">
+   </FileRef>
+   <FileRef
+      location = "group:FeatureHistory">
+   </FileRef>
+   <FileRef
+      location = "group:FeatureTrack">
+   </FileRef>
+   <FileRef
+      location = "group:FeatureSettings">
    </FileRef>
 </Workspace>

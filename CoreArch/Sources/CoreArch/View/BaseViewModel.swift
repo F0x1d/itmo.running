@@ -7,7 +7,11 @@
 
 import Foundation
 import SwiftUI
+import Combine
 
 @MainActor open class BaseViewModel: ObservableObject {
+    
+    public var compositeSubscription: Set<AnyCancellable> = []
+    
     public init() { }
 }

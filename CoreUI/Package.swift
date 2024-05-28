@@ -14,7 +14,15 @@ let package = Package(
             targets: ["CoreUI"]
         ),
     ],
+    dependencies: [
+        .package(path: "../Extensions")
+    ],
     targets: [
-        .target(name: "CoreUI")
+        .target(
+            name: "CoreUI",
+            dependencies: [
+                "Extensions"
+            ]
+        )
     ]
 )

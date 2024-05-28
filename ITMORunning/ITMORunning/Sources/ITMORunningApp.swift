@@ -6,12 +6,19 @@
 //
 
 import SwiftUI
+import SwiftData
+import CoreDI
+import Data
 
 @main
-struct ITMORunningApp: App {
+@MainActor struct ITMORunningApp: App {
+    
+    @State private var container = di.modelContainer()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .modelContainer(container)
         }
     }
 }

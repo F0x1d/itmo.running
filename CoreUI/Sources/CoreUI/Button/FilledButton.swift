@@ -7,12 +7,15 @@
 
 import Foundation
 import SwiftUI
+import Extensions
 
 public struct FilledButton: View {
     let label: String
     let loading: Bool
     let disabled: Bool
     let action: () -> Void
+    
+    @Environment(\.colorScheme) private var colorScheme
     
     public init(_ label: String, loading: Bool = false, disabled: Bool = false, action: @escaping () -> Void) {
         self.label = label
@@ -24,6 +27,8 @@ public struct FilledButton: View {
     public var body: some View {
         BaseButton(label, loading: loading, disabled: disabled, action: action)
             .buttonStyle(.borderedProminent)
+            .foregroundStyle(colorScheme.colorOnPrimary)
+            .tint(colorScheme.colorPrimary)
     }
 }
 
@@ -38,5 +43,11 @@ public struct FilledButton: View {
             NSLog("click")
         }
         .padding()
+        
+        FilledButton("Label") {
+            NSLog("click")
+        }
+        .padding()
+        .preferredColorScheme(.dark)
     }
 }
