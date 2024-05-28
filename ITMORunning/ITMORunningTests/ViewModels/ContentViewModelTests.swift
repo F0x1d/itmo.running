@@ -13,18 +13,17 @@ import CoreDI
 
 final class ContentViewModelTests: BaseXCTestCase {
     
+    @MainActor
     func testShouldChangeCurrentTab() async {
-        await MainActor.run {
-            let viewModel = di.contentViewModel()
-            
-            viewModel.currentTab = ContentViewTab.track
-            XCTAssertEqual(viewModel.currentTab, ContentViewTab.track)
-            
-            viewModel.currentTab = ContentViewTab.history
-            XCTAssertEqual(viewModel.currentTab, ContentViewTab.history)
-            
-            viewModel.currentTab = ContentViewTab.track
-            XCTAssertEqual(viewModel.currentTab, ContentViewTab.track)
-        }
+        let viewModel = di.contentViewModel()
+        
+        viewModel.currentTab = ContentViewTab.track
+        XCTAssertEqual(viewModel.currentTab, ContentViewTab.track)
+        
+        viewModel.currentTab = ContentViewTab.history
+        XCTAssertEqual(viewModel.currentTab, ContentViewTab.history)
+        
+        viewModel.currentTab = ContentViewTab.track
+        XCTAssertEqual(viewModel.currentTab, ContentViewTab.track)
     }
 }
